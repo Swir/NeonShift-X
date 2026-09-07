@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.pyd
+*.log
+*.tmp
+*.bak
+*.spec
+build/
+dist/
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+neonshift_config.json
+neonshift_macro.json
