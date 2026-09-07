@@ -1,3 +1,4 @@
-customtkinter>=5.2.2
+customtkinter>=5.2,<7
 pyautogui>=0.9.54
-pynput>=1.7.7
+pynput>=1.7
+pillow>=10

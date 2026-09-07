@@ -1,0 +1,18 @@
+NEONSHIFT X - nowy interfejs
+
+1. Rozpakuj caly folder z archiwum ZIP.
+2. Jesli masz juz Python i biblioteki poprzedniej wersji, uruchom START.bat.
+3. Jesli brakuje bibliotek, uruchom INSTALUJ.bat, a potem START.bat.
+Wymagany Python 3.10 lub nowszy z obsluga Tkinter (standardowa instalacja Windows).
+
+Zachowaj folder assets obok NeonShift_X.py - zawiera grafike banera.
+Pliki neonshift_config.json i neonshift_macro.json ze starej wersji mozesz
+skopiowac obok nowego programu. Mozesz tez wczytac makro w Macro Manager.
+
+Dashboard: przelaczniki aktywnosci, nagrywania i odtwarzania.
+Boczne menu: ustawienia modulow, import/eksport makra i ustawienia programu.
+F8: zatrzymanie wszystkich modulow. ESC: zatrzymanie i zapis nagrania.
+
+Wyglad inspirowany przeslanym screenem. Baner z pantera jest nowa ilustracja.
+Program odtwarza glowne okno aplikacji; prawa czesc plakatu i miniatury okien
+nie sa elementami pulpitu programu.

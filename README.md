@@ -15,6 +15,10 @@
 
 ---
 
+![NeonShift X cyberpanther banner](assets/neonshift_hero.png)
+
+*Banner artwork used by the application.*
+
 ## 🚀 About
 
 **NEONSHIFT X** is a desktop macro recorder, playback engine and configurable activity utility written in Python. It combines mouse and keyboard recording with a futuristic neon control center designed for Windows.
@@ -56,7 +60,18 @@ pip install -r requirements.txt
 python NeonShift_X.py
 ```
 
-Requires Python 3.10+ and is primarily designed for Windows.
+Requires Python 3.10+ with Tkinter and is primarily designed for Windows.
+
+On Windows, you can also run `INSTALUJ.bat` once to install dependencies, then `START.bat` to open the application. Keep the `assets` folder beside `NeonShift_X.py`.
+
+## Neon interface 2.0
+
+- Dashboard with Activity, Recording and Playback switches, Emergency Stop, live statistics, engine statuses and event log.
+- Sidebar pages for module settings, macro import/export, statistics and application settings.
+- Cyberpanther banner with cyan and magenta accents.
+- Existing `neonshift_config.json` and `neonshift_macro.json` files can be copied beside the updated program.
+
+Validation: Python syntax and required asset presence checked. Live GUI validation was blocked by a Tcl/Tk initialization error in the test environment.
 
 ---
 
