@@ -1,0 +1,85 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release tag (for example v2.0.0)
+        required: true
+        default: v2.0.0
+  push:
+    tags:
+      - "v*"
+    branches:
+      - main
+    paths:
+      - ".github/workflows/release.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  windows-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version
+        shell: pwsh
+        run: |
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            $version = "${{ inputs.version }}"
+          } elseif ("${{ github.ref_type }}" -eq "tag") {
+            $version = "${{ github.ref_name }}"
+          } else {
+            $version = "v2.0.0"
+          }
+          "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pyinstaller
+
+      - name: Validate source and assets
+        shell: pwsh
+        run: |
+          python -m py_compile NeonShift_X.py
+          if (-not (Test-Path "assets/neonshift_hero.png")) { throw "Required asset assets/neonshift_hero.png is missing" }
+
+      - name: Build Windows EXE
+        shell: pwsh
+        run: pyinstaller --noconfirm --clean --onefile --windowed --name "NeonShift-X" --collect-all customtkinter --add-data "assets;assets" "NeonShift_X.py"
+
+      - name: Package release
+        shell: pwsh
+        run: |
+          $package = "NeonShift-X-$env:VERSION-Windows-x64"
+          New-Item -ItemType Directory -Force -Path release | Out-Null
+          Copy-Item "dist/NeonShift-X.exe" "release/NeonShift-X.exe"
+          Copy-Item "README.md" "release/README.md"
+          Copy-Item "CZYTAJ.txt" "release/CZYTAJ.txt"
+          $zip = "$package.zip"
+          Compress-Archive -Path "release/*" -DestinationPath $zip -Force
+          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+          "$hash  $zip" | Set-Content "$zip.sha256"
+          "ZIP_NAME=$zip" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Publish GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if (gh release view $env:VERSION --repo "${{ github.repository }}" 2>$null) {
+            gh release upload $env:VERSION "dist/NeonShift-X.exe" $env:ZIP_NAME "$env:ZIP_NAME.sha256" --clobber --repo "${{ github.repository }}"
+          } else {
+            gh release create $env:VERSION "dist/NeonShift-X.exe" $env:ZIP_NAME "$env:ZIP_NAME.sha256" --target "${{ github.sha }}" --title "NeonShift X $env:VERSION" --generate-notes --repo "${{ github.repository }}"
+          }
