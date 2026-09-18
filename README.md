@@ -1,130 +1,168 @@
+<!-- SWIR-README-STANDARD:v2 -->
+
 <div align="center">
 
-# ⚡ NEONSHIFT X
+<img width="100%" src="assets/readme/hero.svg" alt="NeonShift X — local Windows macro recorder, playback and activity engine" />
 
-### Neon Gaming Macro & Activity Engine for Windows
+<br>
 
-**Macro Recorder • Playback Engine • Activity Modes • Emergency Stop • Gaming UI**
+![Python](https://img.shields.io/badge/Python-3.10%2B-02050A?style=for-the-badge&logo=python&logoColor=62E5FF)
+![GUI](https://img.shields.io/badge/GUI-CustomTkinter-02050A?style=for-the-badge&logo=python&logoColor=62E5FF)
+![Platform](https://img.shields.io/badge/Platform-Windows-02050A?style=for-the-badge&logo=windows11&logoColor=62E5FF)
+![Release](https://img.shields.io/badge/Release-v2.0.0-02050A?style=for-the-badge&logo=github&logoColor=62E5FF)
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
-![GUI](https://img.shields.io/badge/GUI-CustomTkinter-00E5FF)
-![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Active-39FF88)
+[![Author](https://img.shields.io/badge/Author-Swir-0088FF?style=flat-square&logo=github)](https://github.com/Swir)
+[![Stars](https://img.shields.io/github/stars/Swir/NeonShift-X?style=flat-square&color=0088FF)](https://github.com/Swir/NeonShift-X/stargazers)
+
+<br>
+
+[**Highlights**](#-highlights) · [**Quick Start**](#-quick-start) · [**Controls**](#-safety--controls) · [**Status**](STATUS.md) · [**Releases**](#-releases)
 
 </div>
 
----
+<img width="100%" src="https://raw.githubusercontent.com/Swir/Swir/main/assets/power-divider-v4.svg" alt="SWIR electric divider" />
 
-![NeonShift X cyberpanther banner](assets/neonshift_hero.png)
+## 📍 Project Status
 
-*Banner artwork used by the application.*
+<img width="100%" src="assets/readme/progress-card.svg" alt="NeonShift X product progress — N/A because no canonical measurable product roadmap exists" />
 
-## 🚀 About
-
-**NEONSHIFT X** is a desktop macro recorder, playback engine and configurable activity utility written in Python. It combines mouse and keyboard recording with a futuristic neon control center designed for Windows.
-
-The project focuses on transparent local automation: record your own input, inspect the captured macro, replay it with configurable speed and loops, or use lightweight activity modes when appropriate.
-
----
-
-## ✨ Features
-
-| Module | Features |
+| Item | Status |
 |---|---|
-| 🖱️ Mouse | movement, clicks and scroll recording |
-| ⌨️ Keyboard | key-down and key-up recording |
-| ▶️ Playback | configurable speed and repeat count |
-| 🎮 Activity Engine | Move & Return, Drift and Micro Jitter modes |
-| 🛑 Safety | F8 global Emergency Stop and PyAutoGUI Fail-Safe |
-| 📊 Telemetry | moves, clicks, keys, macro runs and activity pulses |
-| 🔎 Macro Inspector | quick statistics for recorded macros |
-| 💾 Configuration | persistent local JSON settings |
-| 🌌 Interface | dark neon cyan / purple / magenta gaming dashboard |
+| Current source version | `2.0 NEON` |
+| Primary platform | Windows |
+| Latest public release | [v2.0.0](https://github.com/Swir/NeonShift-X/releases/tag/v2.0.0) |
+| Public release assets | Windows EXE + portable ZIP + SHA256 |
+| Product completion | **N/A** — no canonical measurable roadmap/denominator exists |
+| Detailed status | [STATUS.md](STATUS.md) |
 
----
+The release version, package size and documentation completeness are not used as a product-completion percentage.
 
-## 🛑 Controls
+## 🚀 Overview
 
-- **F8** — Global Emergency Stop for recording, playback and Activity Engine.
-- **ESC** — Stop macro recording.
-- Moving the pointer to a PyAutoGUI fail-safe corner can stop automated pointer actions.
+**NeonShift X** is a Windows-focused desktop macro recorder, playback engine and configurable activity utility written in Python. It records local mouse/keyboard input, lets the user inspect and replay captured macros, and provides bounded pointer-activity modes through a neon CustomTkinter control center.
 
----
+The project is designed for transparent local automation. Use it only on your own system and only where automation is permitted.
 
-## 📦 Installation
+## ✨ Highlights
+
+| Feature | What it does |
+|---|---|
+| 🖱️ Mouse recording | Captures movement, clicks and scroll events |
+| ⌨️ Keyboard recording | Stores key-down and key-up events for more accurate modifier combinations |
+| ▶️ Playback | Replays recorded events with configurable speed and repeat count |
+| 🎮 Activity Engine | Provides Move & Return, Drift and Micro Jitter modes |
+| 🛑 Emergency controls | F8 global stop plus PyAutoGUI fail-safe behavior |
+| 📊 Local telemetry | Tracks moves, clicks, keys, macro runs and activity pulses |
+| 🔎 Macro inspector | Summarizes recorded macro content |
+| 💾 Local configuration | Saves settings and macro data beside the application |
+
+## 🖼️ Current Application Artwork
+
+The project already includes its own cyberpanther artwork used by the application. It is preserved rather than replaced by a generic screenshot.
+
+<img width="900" src="assets/neonshift_hero.png" alt="NeonShift X cyberpanther application artwork" />
+
+## ⚙️ Quick Start
+
+### Recommended — Windows release
+
+Download **[NeonShift X v2.0.0](https://github.com/Swir/NeonShift-X/releases/tag/v2.0.0)**. The public release provides `NeonShift-X.exe`, a Windows x64 ZIP and SHA256 checksum.
+
+### From source
 
 ```bash
 git clone https://github.com/Swir/NeonShift-X.git
 cd NeonShift-X
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python NeonShift_X.py
 ```
 
-Requires Python 3.10+ with Tkinter and is primarily designed for Windows.
+Windows convenience scripts are also present:
 
-On Windows, you can also run `INSTALUJ.bat` once to install dependencies, then `START.bat` to open the application. Keep the `assets` folder beside `NeonShift_X.py`.
+```text
+INSTALUJ.bat
+START.bat
+```
 
-## Neon interface 2.0
+## 📋 Requirements / Compatibility
 
-- Dashboard with Activity, Recording and Playback switches, Emergency Stop, live statistics, engine statuses and event log.
-- Sidebar pages for module settings, macro import/export, statistics and application settings.
-- Cyberpanther banner with cyan and magenta accents.
-- Existing `neonshift_config.json` and `neonshift_macro.json` files can be copied beside the updated program.
+- Python **3.10+** according to the current project guidance.
+- Runtime dependencies: CustomTkinter, PyAutoGUI, Pynput and Pillow.
+- Tkinter must be available in the Python installation.
+- The application is Windows-focused and the public v2.0.0 package is a Windows build.
+- Live GUI behavior still depends on a working desktop/Tk environment; a prior validation note recorded Tcl/Tk initialization as unavailable in the test environment used at that time.
 
-Validation: Python syntax and required asset presence checked. Live GUI validation was blocked by a Tcl/Tk initialization error in the test environment.
+## 🛑 Safety & Controls
 
----
+- **F8** — global Emergency Stop for recording, playback and the Activity Engine.
+- **ESC** — stop macro recording.
+- PyAutoGUI fail-safe remains enabled; moving the pointer to a fail-safe corner can stop automated pointer actions.
+- Activity movement is bounded to a safe screen area in the current implementation.
 
 ## 🎛️ Activity Modes
 
-**Move & Return** performs a small movement and returns the cursor to its previous position. **Drift** performs bounded movement while keeping the cursor inside a safe screen area. **Micro Jitter** uses very small movements for a lighter activity pattern.
-
-Intervals and movement ranges are configurable from the application interface.
-
----
+**Move & Return** performs a bounded movement and returns the pointer to its previous position. **Drift** performs bounded movement without the return step. **Micro Jitter** performs very small movements. Intervals and movement ranges are configurable in the UI.
 
 ## 🎙️ Macro Engine
 
-NEONSHIFT X records timestamped mouse and keyboard events. Keyboard input stores separate press and release events so modifier combinations such as Ctrl, Shift and Alt can be reproduced more accurately. Legacy `keypress` macro events are also supported for compatibility with older recordings.
+NeonShift X records timestamped mouse and keyboard events. Keyboard input stores separate press and release events so combinations using Ctrl, Shift or Alt can be reproduced more accurately. Legacy `keypress` events remain supported for older macro files.
 
-Macro data is stored locally in `neonshift_macro.json`. Application settings are stored in `neonshift_config.json`. Both files are ignored by Git by default.
+Current local files:
 
----
+- `neonshift_macro.json` — recorded macro data.
+- `neonshift_config.json` — application settings.
 
-## 🔍 Discoverability
+Both are ignored by Git in the current project configuration.
 
-`python macro recorder` • `windows macro recorder` • `gaming macro python` • `customtkinter gaming ui` • `python mouse recorder` • `python keyboard recorder` • `pynput macro recorder` • `pyautogui macro` • `macro playback engine` • `desktop automation python` • `neon python gui` • `activity engine windows` • `mouse movement utility` • `keyboard automation` • `macro inspector` • `gaming automation dashboard` • `customtkinter neon dashboard`
+## 🧠 Technology / Architecture
 
----
+| Layer | Technology / role |
+|---|---|
+| GUI | CustomTkinter + Tkinter |
+| Input capture | Pynput |
+| Playback / pointer actions | PyAutoGUI |
+| Image handling | Pillow |
+| State / persistence | Python threading + JSON files |
+| Packaging | GitHub Actions Windows release workflow |
 
-## 🛠️ Built With
+## 🧪 Documentation Verification
 
-- Python
-- CustomTkinter
-- PyAutoGUI
-- Pynput
-- Tkinter
-- Threading
-- JSON
+```bash
+python tools/readme_progress.py --check
+```
 
----
+The dedicated README workflow verifies generated SVG progress assets, required embeddings and the absence of retired character-based progress meters. It does not claim application runtime verification.
 
-## ⚠️ Responsible Use
+## 📦 Releases
 
-NEONSHIFT X automates local keyboard and mouse input. Use it only where automation is permitted. Do not use it to spam, bypass security controls, evade platform restrictions, or automate actions you are not authorized to perform.
+Latest verified public release: **[NeonShift X v2.0.0](https://github.com/Swir/NeonShift-X/releases/tag/v2.0.0)**.
 
----
+Verified release assets include:
 
-## 👨‍💻 Author
+- `NeonShift-X.exe`
+- `NeonShift-X-v2.0.0-Windows-x64.zip`
+- `NeonShift-X-v2.0.0-Windows-x64.zip.sha256`
 
-Developed by **Swir** — [@Swir](https://github.com/Swir)
+## ⚠️ Responsible Use / Limitations
 
----
+NeonShift X automates local keyboard and mouse input. Use it only where automation is explicitly permitted. Do not use it to spam, bypass security controls, evade platform restrictions, falsify required user presence, or automate actions you are not authorized to perform.
+
+The repository does not document a canonical measurable product roadmap, so product-completion progress remains **N/A** rather than being inferred from the v2.0.0 release.
+
+## 🔎 Search Keywords
+
+`windows macro recorder` • `python macro recorder` • `customtkinter macro app` • `mouse recorder windows` • `keyboard recorder python` • `pynput macro recorder` • `pyautogui playback` • `macro playback engine` • `desktop automation python` • `neon python gui` • `local macro utility` • `macro inspector` • `emergency stop automation` • `windows automation gui` • `neonshift x`
+
+<img width="100%" src="https://raw.githubusercontent.com/Swir/Swir/main/assets/power-divider-v4.svg" alt="SWIR electric divider" />
 
 <div align="center">
 
-### ⚡ RECORD • REPLAY • CONTROL
+<img src="assets/app_icon.svg" alt="NeonShift X project icon" width="86" height="86" />
 
-⭐ Star the repository if you find the project useful.
+### `RECORD • REPLAY • CONTROL`
+
+⭐ **If NeonShift X is useful, consider leaving a star.**
+
+[**← SWIR profile**](https://github.com/Swir) · [**All projects →**](https://github.com/Swir?tab=repositories)
 
 </div>
